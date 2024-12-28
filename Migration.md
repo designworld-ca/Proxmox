@@ -21,8 +21,8 @@
 - suggestions to convert or copy your vmdk to the root install will not work if the .vmdk file is larger than ~80 Gb
 
 # Connect VmWare guest .vmdk file
-- copy vmdk to a usb drive
--connect usb to host server
+- copy vmdk from the VmWare export to a usb drive
+- connect usb to host server
 ```
 mkdir /mnt/usb
 mount /dev/sdc1 /mnt/usb/
@@ -31,33 +31,33 @@ ls /mnt/usb
 - and validate that vmdk is there
 
 # Create a new Proxmox guest VM
-- Create a new VM with number of sockets and CPU closely matching the guest you wish to import
+- create a new VM with number of sockets and CPU closely matching the guest you wish to import
 - default settings are fine for most uses
-- Under "Create virtual machine" "OS" select "do not use any media"
-- Note the VM ID which will start with 100 and you will need later
+- under "Create virtual machine" "OS" select "do not use any media"
+- note the VM ID which will start with 100 and you will need later
 - you will need to add a disk but we will not use it so the settings are not important
-- Under Confirm do not select "start after created", just click finish
-- Note your new vm is located in local-lvm (prox)
-- Click on the left side listing for your VM
-- Go to Hardware and remove the hard disk by selecting "Detach from VM"
-- The name for the disk will change to Unused Disk 0, remove it
+- under Confirm do not select "start after created", just click finish
+- note your new vm is located in local-lvm (prox)
+- click on the left side listing for your VM
+- go to Hardware and remove the hard disk by selecting "Detach from VM"
+- the name for the disk will change to Unused Disk 0, remove it
 - from the Prox host on the left side select the console
 
 # Import and convert the VmWare .vmdk file to Proxmox
-- Enter this command, it will take a while to process
+- enter this command, it will take a while to process
 ```
 qm importdisk 100 /mnt/usb/disk-0.vmdk local-lvm -format qcow2
 ```
 
 # Configure the Proxmox guest VM
-- Once import is complete go to the guest VM Hardware and you will see "Unused Disk 0" again 
+- once import is complete go to the guest VM Hardware and you will see "Unused Disk 0" again 
 - this time it contains the imported vmdk which has been converted to the preferred Proxmox format of qcow2
 - click on the Unused Disk entry and click Edit.
-- The default settings should be suitable for most use cases.  Click Add
-- Start the guest VM and review the messages seen at boot for any errors
+- the default settings should be suitable for most use cases.  Click Add
+- start the guest VM and review the messages seen at boot for any errors
 
 ## IP Address
-- If you are using a static IP for the guest you will have to edit the network interfaces file
+- if you are using a static IP for the guest you will have to edit the network interfaces file
 - from the guest console enter ip a and confirm which of the interfaces is not working
 
 - For ubuntu enter
