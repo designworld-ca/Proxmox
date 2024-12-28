@@ -82,7 +82,7 @@ https://www.itsfullofstars.de/2021/04/proxmox-qemu-guest-agent-installation/
 ```
 sudo apt-get install qemu-guest-agent
 ```
--exit
+- exit
 
 #### Configure guest agent in the Proxmox GUI
 - shut down the guest
@@ -90,7 +90,7 @@ sudo apt-get install qemu-guest-agent
 - start the guest
 - validate that the guest agent is running in the guest by entering on the console
 ```
-systemctl status show
+systemctl status
 ```
 the proxmox gui should now show the IP address and Mac address
 
