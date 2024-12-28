@@ -109,3 +109,11 @@ https://www.proxmox.com/downloads
 https://github.com/Meliox/PVE-mods
 
 https://www.itsfullofstars.de/2021/04/proxmox-qemu-guest-agent-installation/
+
+https://pve.proxmox.com/wiki/Migration_of_servers_to_Proxmox_VE
+
+https://blog.galt.me/migrating-from-esxi-to-proxmox/
+
+https://nicolas.busseneau.fr/en/blog/2021/07/esxi-to-proxmox-migration
+
+https://pve.proxmox.com/wiki/Advanced_Migration_Techniques_to_Proxmox_VE#Server_self-migration
