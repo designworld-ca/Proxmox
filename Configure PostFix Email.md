@@ -7,7 +7,12 @@
 - It may have spaces in it but this does not affect substituting it in Postfix for a password
 
 
-
+# Testing
+- from the host command line as root
+```
+# send a test from proxmox
+echo "Test email from Proxmox: $(hostname)" | /usr/bin/proxmox-mail-forward
+```
 # References
 
 https://www.naturalborncoder.com/2023/05/setting-up-email-notifications-in-proxmox-using-gmail/
