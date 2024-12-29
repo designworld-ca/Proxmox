@@ -77,15 +77,17 @@ sudo netplan apply
 https://github.com/Meliox/PVE-mods
 
 ### To install the qemu guest agent
-https://www.itsfullofstars.de/2021/04/proxmox-qemu-guest-agent-installation/
+
 #### Install guest agent on the vm guest
 ```
 sudo apt-get install qemu-guest-agent
+sudo systemctl enable qemu-guest-agent
 ```
 - exit
 
 #### Configure guest agent in the Proxmox GUI
-- shut down the guest
+- shut down the guest. This is very important as one user writes
+- "As my experience you have to enable the agent WHILE the vm is off; if you enable it while running the "Enabled" label is red even if you stop and start the VM. I had the same issue and stopping the VM and disabling saving and enabling again the parameter it worked."
 - go to options, select the qemu guest agent entry and edit the value to enable the agent
 - start the guest
 - validate that the guest agent is running in the guest by entering on the console
@@ -103,6 +105,8 @@ the proxmox gui should now show the IP address and Mac address
 ## References
 
 https://www.itsfullofstars.de/2019/07/import-ova-as-proxmox-vm/
+
+https://pve.proxmox.com/wiki/Migration_of_servers_to_Proxmox_VE
  
 https://www.proxmox.com/downloads
 
@@ -110,7 +114,9 @@ https://github.com/Meliox/PVE-mods
 
 https://www.itsfullofstars.de/2021/04/proxmox-qemu-guest-agent-installation/
 
-https://pve.proxmox.com/wiki/Migration_of_servers_to_Proxmox_VE
+https://pve.proxmox.com/wiki/Qemu-guest-agent
+
+
 
 https://blog.galt.me/migrating-from-esxi-to-proxmox/
 
