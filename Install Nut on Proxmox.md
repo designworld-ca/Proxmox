@@ -79,6 +79,25 @@ nano /etc/nut/upsd.users
 ```
   MONITOR BACKUPSPRO@localhost 1 monitor [REDACTED] master
 ```
+- this is also the file to configure what alerts you want to know about by removing the # at the start of the line
+
+```
+NOTIFYMSG ONBATT        "UPS %s on battery"
+NOTIFYMSG LOWBATT       "UPS %s battery is low"
+NOTIFYMSG COMMBAD       "Communications with UPS %s lost"
+NOTIFYMSG REPLBATT      "UPS %s battery needs to be replaced"
+NOTIFYMSG NOCOMM        "UPS %s is unavailable"
+```
+- and the notify settings
+```
+
+NOTIFYFLAG ONBATT       SYSLOG+WALL
+NOTIFYFLAG LOWBATT      SYSLOG+WALL
+NOTIFYFLAG COMMBAD      SYSLOG+WALL
+NOTIFYFLAG REPLBATT     SYSLOG+WALL
+NOTIFYFLAG NOCOMM       SYSLOG+WALL
+```
+
 # Testing
 ### restart all services and get status
 ```
