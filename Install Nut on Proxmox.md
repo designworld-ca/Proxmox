@@ -105,4 +105,5 @@ upsc BACKUPSPRO@localhost ups.status
 # References
 
 https://gist.github.com/Jiab77/0778ef11a441f49df62e2b65f3daef76
+
 https://zackreed.me/installing-nut-on-ubuntu/
