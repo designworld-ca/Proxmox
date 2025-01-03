@@ -120,7 +120,7 @@ CMDSCRIPT etc/nut/upssched-cmd
 PIPEFN /var/db/nut/upssched.pipe
 LOCKFN /var/db/nut/upssched.lock
 
-AT ONBATT  BACKUPSPRO@localhost EXECUTE online
+AT ONLINE  BACKUPSPRO@localhost EXECUTE online
 AT ONBATT  BACKUPSPRO@localhost EXECUTE onbatt
 AT LOWBATT BACKUPSPRO@localhost EXECUTE lowbatt
 ```
