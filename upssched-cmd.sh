@@ -2,6 +2,7 @@
 # dont forget to chmod +x this file
 #!/bin/sh
 # upssched-cmd for workstation
+# note that the replbatt and nocomm flags are handled by the last (default) option
 logger -i -t upssched-cmd Calling upssched-cmd $1
 
 
