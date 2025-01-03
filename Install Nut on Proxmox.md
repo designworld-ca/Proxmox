@@ -16,7 +16,7 @@ nut-scanner -U
 
 ## nut.conf
 - set standalone mode which is for my use case of server connected to UPS
-- add this
+- this line is the only line you need for this use case
 ```
 MODE=standalone
 ```
@@ -32,6 +32,7 @@ LISTEN ::1 3493
 echo -e "\n# Detected UPS from USB" | tee -a /etc/nut/ups.conf
 
 # Add detected UPS details
+
 nut-scanner -UNq 2>/dev/null | tee -a /etc/nut/ups.conf
 
 # Check the result
@@ -45,10 +46,13 @@ cat /etc/nut/ups.conf
         serial = "0B2138N08003"
         vendor = "American Power Conversion"
         bus = "002"
+
 ```
 
 ### Edit the results to add your name and description for the UPS
 - Formatting is important!  Do not have extra spaces before [BACKUPSPRO]
+- by overiding the battery.charge.low the shutdown command will be issued when there is still plenty of runtime
+- this is useful in case of slow shutdowns
 ```
 # Detected UPS from USB
 [BACKUPSPRO]
@@ -61,6 +65,8 @@ cat /etc/nut/ups.conf
         serial = "0B2138N08003"
         vendor = "American Power Conversion"
         bus = "002"
+        ignorelb
+        override.battery.charge.low=50
 ```
 
 ## upsd.users
@@ -68,20 +74,26 @@ cat /etc/nut/ups.conf
 
 ```
 nano /etc/nut/upsd.users
-# add this
+# add this to allow the user to SET the battery.charge.low
 [monitor]
 	password = [REDACTED]
+        actions = SET
+        instcmds = ALL
 	upsmon master
 ```
 
 ## upsmon.conf
 - add the user and UPS you are monitoring just below the MONITOR section that has examples
+- change the location of the shutdown script to the custom script
 ```
-  MONITOR BACKUPSPRO@localhost 1 monitor [REDACTED] master
+MONITOR BACKUPSPRO@localhost 1 monitor [REDACTED] master
+SHUTDOWNCMD "/etc/nut/shutdown_script.sh"
+NOTIFYCMD /etc/nut/upssched-cmd
 ```
 - this is also the file to configure what alerts you want to know about by removing the # at the start of the line
 
 ```
+NOTIFYMSG ONLINE        "UPS %s on line power"
 NOTIFYMSG ONBATT        "UPS %s on battery"
 NOTIFYMSG LOWBATT       "UPS %s battery is low"
 NOTIFYMSG COMMBAD       "Communications with UPS %s lost"
@@ -91,11 +103,13 @@ NOTIFYMSG NOCOMM        "UPS %s is unavailable"
 - and the notify settings
 ```
 
-NOTIFYFLAG ONBATT       SYSLOG+WALL
-NOTIFYFLAG LOWBATT      SYSLOG+WALL
-NOTIFYFLAG COMMBAD      SYSLOG+WALL
-NOTIFYFLAG REPLBATT     SYSLOG+WALL
-NOTIFYFLAG NOCOMM       SYSLOG+WALL
+NOTIFYFLAG ONLINE       SYSLOG+WALL+EXEC
+NOTIFYFLAG ONBATT       SYSLOG+WALL+EXEC
+NOTIFYFLAG LOWBATT      SYSLOG+WALL+EXEC
+NOTIFYFLAG COMMBAD      SYSLOG+WALL+EXEC
+NOTIFYFLAG REPLBATT     SYSLOG+WALL+EXEC
+NOTIFYFLAG NOCOMM       SYSLOG+WALL+EXEC
+
 ```
 
 # Testing
@@ -103,7 +117,7 @@ NOTIFYFLAG NOCOMM       SYSLOG+WALL
 ```
 for S in nut-client.service nut-monitor.service nut-server.service ; do systemctl restart $S ; done
 ```
-- wait for services to restart and issue this
+- wait a minute or two for services to restart and issue this
 ```
 for S in nut-client.service nut-monitor.service nut-server.service ; do systemctl status $S -l ; done
 ```
