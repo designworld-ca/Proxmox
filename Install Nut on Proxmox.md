@@ -52,7 +52,7 @@ cat /etc/nut/ups.conf
 ### Edit the results to add your name and description for the UPS
 - Formatting is important!  Do not have extra spaces before [BACKUPSPRO]
 - by overiding the battery.charge.low the shutdown command will be issued when there is still plenty of runtime
-- this is useful in case of slow shutdowns
+- this is useful in case of slow or repeated shutdowns
 ```
 # Detected UPS from USB
 [BACKUPSPRO]
