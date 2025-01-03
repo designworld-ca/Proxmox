@@ -120,15 +120,17 @@ CMDSCRIPT etc/nut/upssched-cmd
 PIPEFN /var/db/nut/upssched.pipe
 LOCKFN /var/db/nut/upssched.lock
 
-AT ONLINE  BACKUPSPRO@localhost EXECUTE online
-AT ONBATT  BACKUPSPRO@localhost EXECUTE onbatt
-AT LOWBATT BACKUPSPRO@localhost EXECUTE lowbatt
+AT ONLINE   BACKUPSPRO@localhost EXECUTE online
+AT ONBATT   BACKUPSPRO@localhost EXECUTE onbatt
+AT LOWBATT  BACKUPSPRO@localhost EXECUTE lowbatt
+AT COMMBAD  BACKUPSPRO@localhost EXECUTE commbad
+AT REPLBATT BACKUPSPRO@localhost EXECUTE replbatt
+AT NOCOMM   BACKUPSPRO@localhost EXECUTE nocomm
+
 ```
 
 ## upssched-cmd
-See 
-https://github.com/designworld-ca/Proxmox/blob/3b2099eeb186c48c978b7f2c64baaafef17e8d75/upssched-cmd.sh
+See [here](https://github.com/designworld-ca/Proxmox/blob/3b2099eeb186c48c978b7f2c64baaafef17e8d75/upssched-cmd.sh)
 
 ## shutdown_script.sh
-See
-https://github.com/designworld-ca/Proxmox/blob/3b2099eeb186c48c978b7f2c64baaafef17e8d75/shutdown_script.sh
+See [here](https://github.com/designworld-ca/Proxmox/blob/3b2099eeb186c48c978b7f2c64baaafef17e8d75/shutdown_script.sh)
