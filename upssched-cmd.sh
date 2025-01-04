@@ -1,5 +1,9 @@
 # cat upssched-cmd
 # dont forget to chmod +x this file
+# the use case here is that we will be notified by email of a shutdown from the shutdown script
+# notifications here are for log entries 
+# we do want an email in the event of an edge case
+# like bad or no communication or replace battery messages from the battery
 #!/bin/sh
 # upssched-cmd for workstation
 # note that the replbatt and nocomm flags are handled by the last (default) option
@@ -31,7 +35,8 @@ case $1 in
     echo -e "$MSG1 $MSG2 $MSG3" | mail -s"NUT heart beat fails. Currently $CHMSG" <an email address>
     ;;
  *)
-    logger -i -t upssched-cmd "Bad arg: \"$1\", $CHMSG"
+    logger -i -t upssched-cmd "Unusual event: \"$1\", $CHMSG"
+    echo -e "$MSG1 $MSG2 $MSG3" | mail -s"APC UPS unusual event. Currently $CHMSG" <an email address>
     exit 1
     ;;
 esac
