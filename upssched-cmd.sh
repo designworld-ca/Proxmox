@@ -7,6 +7,7 @@
 #!/bin/sh
 # upssched-cmd for workstation
 # note that the replbatt and nocomm flags are handled by the last (default) option
+now="$(date)"
 logger -i -t upssched-cmd Calling upssched-cmd $1
 
 
@@ -36,7 +37,7 @@ case $1 in
     ;;
  *)
     logger -i -t upssched-cmd "Unusual event: \"$1\", $CHMSG"
-    echo -e "$MSG1 $MSG2 $MSG3" | mail -s"APC UPS unusual event. Currently $CHMSG" <an email address>
+    echo -e "$MSG1 $MSG2 $MSG3" | mail -s"APC UPS unusual event at $now. Currently $CHMSG" <an email address>
     exit 1
     ;;
 esac
