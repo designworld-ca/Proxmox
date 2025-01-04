@@ -3,6 +3,7 @@
 - A power failure is likely to be short but will be followed by power starting and stopping one or more times in short succession
 - The priority is a safe shutdown of the server and a manual restart when there is confidence that power is back and will stay back
 - Powering down the server allows the UPS to continue powering the modem and router for much longer
+- verify that the BIOS of your system is not set to power up automatically when power is supplied or a series of power outages could damage the operating system
 
 # Installation
 - plug UPS into a USB port
