@@ -1,3 +1,9 @@
+# Use case
+- Power is reliable until it's not
+- A power failure is likely to be short but will be followed by power starting and stopping one or more times in short succession
+- The priority is a safe shutdown of the server and a manual restart when there is confidence that power is back and will stay back
+- Powering down the server allows the UPS to continue powering the modem and router for much longer
+
 # Installation
 - plug UPS into a USB port
 - note that out of the box proxmox uses the root user so sudo not required
