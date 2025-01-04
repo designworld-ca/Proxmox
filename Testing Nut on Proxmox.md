@@ -100,7 +100,7 @@ upsc BACKUPSPRO@localhost ups.status
 ```
 - Should show OL for "Online"
 ### check properties of running configuration of UPS
-- note that battery.charge-low is now 50 due to the ups.conf file settings
+- note that battery.charge.low is now 50 due to the ups.conf file settings
 ```
 upsc BACKUPSPRO
 Init SSL without certificate database
