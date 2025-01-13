@@ -72,6 +72,7 @@ Jan 03 15:14:09 <redacted> upsd[1025]: User monitor@127.0.0.1 logged into UPS [B
 
 ```
 chown nut:nut /etc/nut/upsd.users
+chown -R nut:nut /run/nut
 ```
 ### check what commands can be issued to the UPS
 - this is not accurate as you can set the battery.charge.low value from ups.conf
