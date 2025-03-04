@@ -14,11 +14,11 @@
 
 # Proxmox installation
 - reboot into proxmox iso and install
-- for login note that username is root not the email address you supplied
+- for login to the web GUI note that username is root not the email address you supplied
 - configure Proxmox as desired
 - if you are not paying for support select pve-no-subscription under subscription
-- note that local(prox) where proxmox is installed is less than 100Gb
-- suggestions to convert or copy your vmdk to the root install will not work if the .vmdk file is larger than ~80 Gb
+- note that local(prox) disk where proxmox is installed is less than 100Gb
+- suggestions to convert or copy your vmdk to the root install disk will not work if the .vmdk file is larger than ~80 Gb
 
 # Connect VmWare guest .vmdk file
 - copy vmdk from the VmWare export to a usb drive
@@ -115,8 +115,6 @@ https://github.com/Meliox/PVE-mods
 https://www.itsfullofstars.de/2021/04/proxmox-qemu-guest-agent-installation/
 
 https://pve.proxmox.com/wiki/Qemu-guest-agent
-
-
 
 https://blog.galt.me/migrating-from-esxi-to-proxmox/
 
