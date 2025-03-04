@@ -2,6 +2,8 @@
 
 ## Nut stopped working after upgrading to Proxmox 8.3.2
 - appears to be a permissions issue
+- started working again after a shutdown and restart
+  
 ### restart all services and get status
 ```
 for S in nut-client.service nut-monitor.service nut-server.service ; do systemctl restart $S ; done
