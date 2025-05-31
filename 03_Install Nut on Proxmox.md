@@ -139,5 +139,5 @@ AT NOCOMM   BACKUPSPRO@localhost EXECUTE nocomm
 ## upssched-cmd located in /etc/nut
 See [here](https://github.com/designworld-ca/Proxmox/blob/3b2099eeb186c48c978b7f2c64baaafef17e8d75/upssched-cmd.sh)
 
-## shutdown_script.sh located on vm#100
+## shutdown_script.sh located in /etc/nut
 See [here](https://github.com/designworld-ca/Proxmox/blob/3b2099eeb186c48c978b7f2c64baaafef17e8d75/shutdown_script.sh)
