@@ -21,19 +21,19 @@ nut-scanner -U
 
 # Configuration
 
-## nut.conf
+## nut.conf located in /etc/nut
 - set standalone mode which is for my use case of server connected to UPS
 - this line is the only line you need for this use case
 ```
 MODE=standalone
 ```
-## upsd.conf
+## upsd.conf located in /etc/nut
 - add both these lines
 ```
 LISTEN 127.0.0.1 3493
 LISTEN ::1 3493
 ```
-## ups.conf
+## ups.conf located in /etc/nut
 ```
 # Add some spacing and UPS details
 echo -e "\n# Detected UPS from USB" | tee -a /etc/nut/ups.conf
@@ -76,7 +76,7 @@ cat /etc/nut/ups.conf
         override.battery.charge.low=50
 ```
 
-## upsd.users
+## upsd.users located in /etc/nut
 - add a user that is only recognized by nut and is not part of the OS users
 
 ```
@@ -89,7 +89,7 @@ nano /etc/nut/upsd.users
 	upsmon master
 ```
 
-## upsmon.conf
+## upsmon.conf located in /etc/nut
 - add the user and UPS you are monitoring just below the MONITOR section that has examples
 - change the location of the shutdown script to the custom script
 ```
@@ -118,7 +118,7 @@ NOTIFYFLAG REPLBATT     SYSLOG+WALL+EXEC
 NOTIFYFLAG NOCOMM       SYSLOG+WALL+EXEC
 
 ```
-## upssched.conf
+## upssched.conf located in /etc/nut
 ```
 # cat upssched.conf
 
@@ -136,8 +136,8 @@ AT NOCOMM   BACKUPSPRO@localhost EXECUTE nocomm
 
 ```
 
-## upssched-cmd
+## upssched-cmd located in /etc/nut
 See [here](https://github.com/designworld-ca/Proxmox/blob/3b2099eeb186c48c978b7f2c64baaafef17e8d75/upssched-cmd.sh)
 
-## shutdown_script.sh
+## shutdown_script.sh located on vm#100
 See [here](https://github.com/designworld-ca/Proxmox/blob/3b2099eeb186c48c978b7f2c64baaafef17e8d75/shutdown_script.sh)
