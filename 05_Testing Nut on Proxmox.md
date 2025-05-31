@@ -2,7 +2,7 @@
 
 ## Nut stopped working after upgrading to Proxmox 8.3.2
 - appears to be a permissions issue
-- started working again after a shutdown and restart
+- started working again after a shutdown and restart (not a reboot)
   
 ### restart all services and get status
 ```
